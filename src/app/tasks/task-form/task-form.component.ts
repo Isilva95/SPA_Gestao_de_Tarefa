@@ -21,7 +21,7 @@ export class TaskFormComponent implements OnInit {
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     if (id) {
-      this.task = this.taskService.getById(parseInt(id));
+      // this.task = this.taskService.getById(parseInt(id));
       this.title = 'Alterando tarefa';
     }
   }
