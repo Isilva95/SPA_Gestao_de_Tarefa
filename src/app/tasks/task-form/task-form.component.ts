@@ -9,7 +9,7 @@ import { TaskService } from '../shared/task.service';
   styleUrls: ['./task-form.component.css']
 })
 export class TaskFormComponent implements OnInit {
-  task: Task = new Task();
+  task: Task | undefined = new Task();
   title: string = 'Nova tarefa';
 
   constructor(
@@ -21,13 +21,13 @@ export class TaskFormComponent implements OnInit {
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     if (id) {
-      // this.task = this.taskService.getById(parseInt(id));
+      this.task = this.taskService.getById(parseInt(id));
       this.title = 'Alterando tarefa';
     }
   }
 
   onSubmit() {
-    this.taskService.save(this.task);
+    this.taskService.save(this.task!);
     this.router.navigate(['']);
   }
 }
